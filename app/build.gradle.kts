@@ -30,6 +30,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -55,4 +60,8 @@ dependencies {
     //--------------Hilt-------------
     implementation(libs.hilt.android)
     annotationProcessor(libs.hilt.android.compiler)
+
+    //--------------Retrofit-------------
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
 }
