@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -26,8 +27,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
 
@@ -41,7 +42,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    /*--------------Lifecycle-------------*/
+    //--------------Lifecycle-------------
     // ViewModel
     implementation(libs.lifecycle.viewmodel)
     // LiveData
@@ -50,4 +51,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime)
     // Annotation processor
     annotationProcessor(libs.androidx.lifecycle.compiler)
+
+    //--------------Hilt-------------
+    implementation(libs.hilt.android)
+    annotationProcessor(libs.hilt.android.compiler)
 }
