@@ -9,7 +9,7 @@
     android:padding="24dp">
 
     <TextView
-        android:id="@+id/tvTitulo"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilCliente"
+        android:id="@+id/til_customer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -33,12 +33,13 @@
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
         app:boxStrokeColor="#00796b"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTitulo">
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etCliente"
+            android:id="@+id/et_customer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -49,10 +50,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilProduto"
+        android:id="@+id/til_product"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="8dp"
         android:hint="@string/product"
         app:boxBackgroundMode="outline"
@@ -60,11 +61,12 @@
         app:boxCornerRadiusTopStart="16dp"
         app:boxStrokeColor="#00796b"
         app:layout_constraintEnd_toEndOf="parent"
+        app:errorEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilCliente">
+        app:layout_constraintTop_toBottomOf="@id/til_customer">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etProduto"
+            android:id="@+id/et_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -75,22 +77,23 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilQuantidade"
+        android:id="@+id/til_quantity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="8dp"
         android:hint="@string/quantity"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
         app:boxStrokeColor="#00796b"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilProduto">
+        app:layout_constraintTop_toBottomOf="@id/til_product">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etQuantidade"
+            android:id="@+id/et_quantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -101,22 +104,23 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPrecoTotal"
+        android:id="@+id/til_price"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:layout_marginBottom="8dp"
         android:hint="@string/total_price"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
+        app:errorEnabled="true"
         app:boxStrokeColor="#00796b"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilQuantidade">
+        app:layout_constraintTop_toBottomOf="@id/til_quantity">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPrecoTotal"
+            android:id="@+id/et_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -127,7 +131,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnSalvarPedido"
+        android:id="@+id/btn_save_order"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -140,10 +144,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tilPrecoTotal" />
+        app:layout_constraintTop_toBottomOf="@id/til_price" />
 
     <Button
-        android:id="@+id/btnVerPedidos"
+        android:id="@+id/btn_show_orders"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -156,6 +160,6 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnSalvarPedido" />
+        app:layout_constraintTop_toBottomOf="@id/btn_save_order" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

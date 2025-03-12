@@ -60,6 +60,6 @@ public class ListOrdersFragment extends Fragment {
 
     private void setupAdapter() {
         adapter = new OrdersAdapter(OrdersAdapter.DIFFUTILS);
-        binding.rvPedidos.setAdapter(adapter);
+        binding.rvOrders.setAdapter(adapter);
     }
 }

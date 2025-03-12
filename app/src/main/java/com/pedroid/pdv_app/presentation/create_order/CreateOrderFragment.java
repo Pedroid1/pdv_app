@@ -48,16 +48,16 @@ public class CreateOrderFragment extends Fragment {
             if (fieldErrorValidation != null) {
                 switch (fieldErrorValidation.getFieldError()) {
                     case CUSTOMER_NAME:
-                        binding.etCliente.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
+                        binding.tilCustomer.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
                         break;
                     case PRODUCT_NAME:
-                        binding.etProduto.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
+                        binding.tilProduct.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
                         break;
                     case QUANTITY:
-                        binding.etQuantidade.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
+                        binding.tilQuantity.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
                         break;
                     case PRICE:
-                        binding.etPrecoTotal.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
+                        binding.tilPrice.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
                         break;
                 }
             }
@@ -72,20 +72,35 @@ public class CreateOrderFragment extends Fragment {
             Order order = orderEvent.getContentIfNotHandled();
             if (order != null) {
                 ViewUtils.showSnackbar(requireView(), getString(R.string.order_created), Snackbar.LENGTH_SHORT);
+                resetAllEditText();
+
             }
         });
     }
 
+    private void resetAllEditText() {
+        binding.etCustomer.setText("");
+        binding.etProduct.setText("");
+        binding.etQuantity.setText("");
+        binding.etPrice.setText("");
+
+        binding.tilCustomer.setError(null);
+        binding.tilProduct.setError(null);
+        binding.tilQuantity.setError(null);
+        binding.tilPrice.setError(null);
+    }
+
     private void setupOnClick() {
-        binding.btnSalvarPedido.setOnClickListener(view -> {
+        binding.btnSaveOrder.setOnClickListener(view -> {
+            ViewUtils.hideKeyboard(requireView());
             viewModel.createOrder(
-                    binding.etCliente.getText().toString().trim(),
-                    binding.etProduto.getText().toString().trim(),
-                    binding.etQuantidade.getText().toString().trim(),
-                    binding.etPrecoTotal.getText().toString().trim()
+                    binding.etCustomer.getText().toString().trim(),
+                    binding.etProduct.getText().toString().trim(),
+                    binding.etQuantity.getText().toString().trim(),
+                    binding.etPrice.getText().toString().trim()
             );
         });
-        binding.btnVerPedidos.setOnClickListener(view -> {
+        binding.btnShowOrders.setOnClickListener(view -> {
             Navigation.findNavController(requireView()).navigate(CreateOrderFragmentDirections.actionCreateOrderFragmentToListOrdersFragment());
         });
     }
