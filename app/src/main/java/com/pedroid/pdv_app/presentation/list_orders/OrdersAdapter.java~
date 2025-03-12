@@ -19,11 +19,8 @@ import java.util.Objects;
 
 public class OrdersAdapter extends ListAdapter<OrderListAdapterItem, OrdersAdapter.OrderViewHolder> {
 
-    private OrderAdapterListener listener;
-
     protected OrdersAdapter(@NonNull DiffUtil.ItemCallback<OrderListAdapterItem> diffCallback, OrderAdapterListener listener) {
         super(diffCallback);
-        this.listener = listener;
     }
 
     @NonNull
@@ -42,7 +39,7 @@ public class OrdersAdapter extends ListAdapter<OrderListAdapterItem, OrdersAdapt
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         OrderListAdapterItem item = getItem(position);
         if (holder instanceof OrderViewHolder.OrderItem) {
-            ((OrderViewHolder.OrderItem) holder).bind((OrderListAdapterItem.OrderItem) item, listener);
+            ((OrderViewHolder.OrderItem) holder).bind((OrderListAdapterItem.OrderItem) item);
         } else if (holder instanceof OrderViewHolder.EmptyItem) {
             ((OrderViewHolder.EmptyItem) holder).bind();
         }

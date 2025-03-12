@@ -18,7 +18,7 @@ import com.pedroid.pdv_app.presentation.utils.ViewUtils;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class ListOrdersFragment extends Fragment {
+public class ListOrdersFragment extends Fragment implements OrdersAdapter.OrderAdapterListener {
 
     private FragmentListOrdersBinding binding;
     private OrdersAdapter adapter;
@@ -59,7 +59,12 @@ public class ListOrdersFragment extends Fragment {
     }
 
     private void setupAdapter() {
-        adapter = new OrdersAdapter(OrdersAdapter.DIFFUTILS);
+        adapter = new OrdersAdapter(OrdersAdapter.DIFFUTILS, this);
         binding.rvOrders.setAdapter(adapter);
+    }
+
+    @Override
+    public void deleteOrder(Integer orderId) {
+        viewModel.deleteOrder(orderId);
     }
 }

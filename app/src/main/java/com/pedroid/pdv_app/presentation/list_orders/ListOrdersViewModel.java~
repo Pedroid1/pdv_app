@@ -82,8 +82,9 @@ public class ListOrdersViewModel extends ViewModel {
             }
             if (newOrdersList.isEmpty()) {
                 newOrdersList.add(new OrderListAdapterItem.EmptyItem());
+            } else {
+                orders.setValue(newOrdersList);
             }
-            orders.setValue(newOrdersList);
         }
     }
 
