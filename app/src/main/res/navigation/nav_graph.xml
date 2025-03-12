@@ -17,6 +17,6 @@
     </fragment>
     <fragment
         android:id="@+id/listOrdersFragment"
-        android:name="com.pedroid.pdv_app.presentation.create_order.ListOrdersFragment"
+        android:name="com.pedroid.pdv_app.presentation.list_orders.ListOrdersFragment"
         android:label="ListOrdersFragment" />
 </navigation>

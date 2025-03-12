@@ -5,4 +5,7 @@
     <string name="ver_pedidos">Ver pedidos</string>
     <string name="salvar_pedido">Salvar pedido</string>
     <string name="voltar">Voltar</string>
+    <string name="invalid_name">Nome inválido</string>
+    <string name="invalid_quantity">Quantidade inválida</string>
+    <string name="invalid_total_price">Valor inválido</string>
 </resources>

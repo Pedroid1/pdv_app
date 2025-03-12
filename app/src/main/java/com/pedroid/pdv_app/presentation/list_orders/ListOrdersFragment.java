@@ -1,4 +1,4 @@
-package com.pedroid.pdv_app.presentation.create_order;
+package com.pedroid.pdv_app.presentation.list_orders;
 
 import android.os.Bundle;
 
@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.pedroid.pdv_app.R;
 import com.pedroid.pdv_app.databinding.FragmentListOrdersBinding;
 
 public class ListOrdersFragment extends Fragment {
