@@ -64,8 +64,8 @@ dependencies {
     annotationProcessor(libs.hilt.android.compiler)
 
     //--------------Retrofit-------------
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
 
     //--------------Navigation Component-------------
