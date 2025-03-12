@@ -8,7 +8,7 @@ public class ValidateProductName {
 
     public ValidationResult execute(String name) {
         if (name == null || name.trim().isEmpty()) {
-            return new ValidationResult(false, new UiText.StringResource(R.string.invalid_product));
+            return new ValidationResult(false, new UiText.StringResource(R.string.invalid_name));
         }
         return new ValidationResult(true);
     }

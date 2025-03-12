@@ -8,4 +8,5 @@
     <string name="invalid_name">Nome inválido</string>
     <string name="invalid_quantity">Quantidade inválida</string>
     <string name="invalid_total_price">Valor inválido</string>
+    <string name="invalid_product">Produto inválido</string>
 </resources>

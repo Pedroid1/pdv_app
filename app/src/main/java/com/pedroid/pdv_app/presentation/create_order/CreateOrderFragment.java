@@ -11,12 +11,8 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.pedroid.pdv_app.R;
 import com.pedroid.pdv_app.databinding.FragmentCreateOrderBinding;
-import com.pedroid.pdv_app.domain.UiText;
-import com.pedroid.pdv_app.domain.ValidationResult;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -39,11 +35,39 @@ public class CreateOrderFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setupOnClick();
+        setupObservers();
+    }
+
+    private void setupObservers() {
+        viewModel.getFieldErrorLiveData().observe(getViewLifecycleOwner(), fieldErrorValidationEvent -> {
+            FieldErrorValidation fieldErrorValidation = fieldErrorValidationEvent.getContentIfNotHandled();
+            if (fieldErrorValidation != null) {
+                switch (fieldErrorValidation.getFieldError()) {
+                    case CUSTOMER_NAME:
+                        binding.etCliente.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
+                        break;
+                    case PRODUCT_NAME:
+                        binding.etProduto.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
+                        break;
+                    case QUANTITY:
+                        binding.etQuantidade.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
+                        break;
+                    case PRICE:
+                        binding.etPrecoTotal.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
+                        break;
+                }
+            }
+        });
     }
 
     private void setupOnClick() {
         binding.btnSalvarPedido.setOnClickListener(view -> {
-            Toast.makeText(requireContext(), "Salvar pedido", Toast.LENGTH_SHORT).show();
+            viewModel.createOrder(
+                    binding.etCliente.getText().toString().trim(),
+                    binding.etProduto.getText().toString().trim(),
+                    binding.etQuantidade.getText().toString().trim(),
+                    binding.etPrecoTotal.getText().toString().trim()
+            );
         });
         binding.btnVerPedidos.setOnClickListener(view -> {
             Navigation.findNavController(requireView()).navigate(CreateOrderFragmentDirections.actionCreateOrderFragmentToListOrdersFragment());
