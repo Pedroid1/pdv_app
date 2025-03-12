@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.pedroid.pdv_app.domain.model.Order;
-import com.pedroid.pdv_app.domain.repository.IOrderRepository;
 import com.pedroid.pdv_app.domain.use_cases.order_repository.DeleteOrderUseCase;
 import com.pedroid.pdv_app.domain.use_cases.order_repository.FetchAllOrdersUseCase;
 import com.pedroid.pdv_app.presentation.utils.Event;
