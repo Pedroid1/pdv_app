@@ -68,14 +68,11 @@ public class ListOrdersViewModel extends ViewModel {
 
         if (currentOrders != null) {
             List<OrderListAdapterItem> newOrdersList = new ArrayList<>(currentOrders);
-
-            Iterator<OrderListAdapterItem> iterator = newOrdersList.iterator();
-            while (iterator.hasNext()) {
-                OrderListAdapterItem item = iterator.next();
+            for(OrderListAdapterItem item : newOrdersList) {
                 if (item instanceof OrderListAdapterItem.OrderItem) {
                     Order order = ((OrderListAdapterItem.OrderItem) item).getOrder();
                     if (order.getId() == orderId) {
-                        iterator.remove();
+                        newOrdersList.remove(item);
                         break;
                     }
                 }

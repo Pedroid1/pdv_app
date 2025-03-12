@@ -93,15 +93,13 @@ public class OrdersAdapter extends ListAdapter<OrderListAdapterItem, OrdersAdapt
         }
 
         public static class EmptyItem extends OrderViewHolder {
-            private final EmptyItemBinding binding;
 
             public EmptyItem(EmptyItemBinding binding) {
                 super(binding.getRoot());
-                this.binding = binding;
             }
 
             public void bind() {
-
+                //TODO
             }
         }
     }

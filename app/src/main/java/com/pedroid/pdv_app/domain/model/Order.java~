@@ -56,6 +56,10 @@ public class Order {
         this.price = price;
     }
 
+    public double getTotal() {
+        return quantity * price;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
