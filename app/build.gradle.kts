@@ -66,9 +66,14 @@ dependencies {
     //--------------Retrofit-------------
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation (libs.adapter.rxjava3)
 
 
     //--------------Navigation Component-------------
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
+
+    //--------------RxJava-------------
+    implementation (libs.rxandroid)
+    implementation (libs.rxjava)
 }

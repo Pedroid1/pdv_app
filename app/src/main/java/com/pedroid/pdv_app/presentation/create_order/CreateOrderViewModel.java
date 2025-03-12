@@ -4,6 +4,11 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.pedroid.pdv_app.domain.ValidationResult;
+import com.pedroid.pdv_app.domain.model.Order;
+import com.pedroid.pdv_app.domain.repository.IOrderRepository;
+import com.pedroid.pdv_app.domain.use_cases.order_repository.CreateOrderUseCase;
+import com.pedroid.pdv_app.domain.use_cases.order_repository.DeleteOrderUseCase;
+import com.pedroid.pdv_app.domain.use_cases.order_repository.FetchAllOrdersUseCase;
 import com.pedroid.pdv_app.domain.use_cases.ui_validation.ValidateCustomerName;
 import com.pedroid.pdv_app.domain.use_cases.ui_validation.ValidatePriceUseCase;
 import com.pedroid.pdv_app.domain.use_cases.ui_validation.ValidateProductName;
@@ -13,31 +18,53 @@ import com.pedroid.pdv_app.presentation.utils.Event;
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 @HiltViewModel
 public class CreateOrderViewModel extends ViewModel {
-
+    private final CompositeDisposable disposables;
+    private final IOrderRepository repository;
+    private final CreateOrderUseCase createOrderUseCase;
+    private final FetchAllOrdersUseCase fetchAllOrdersUseCase;
+    private final DeleteOrderUseCase deleteOrderUseCase;
     private final ValidateCustomerName validateCustomerName;
     private final ValidateProductName validateProductName;
     private final ValidateQuantityUseCase validateQuantityUseCase;
     private final ValidatePriceUseCase validatePriceUseCase;
-
     private final MutableLiveData<Event<FieldErrorValidation>> fieldErrorLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Event<Order>> orderCreated = new MutableLiveData<>();
+    private final MutableLiveData<Event<String>> errorMessage = new MutableLiveData<>();
 
     @Inject
-    public CreateOrderViewModel(ValidateCustomerName validateCustomerName,
+    public CreateOrderViewModel(IOrderRepository repository, CreateOrderUseCase createOrderUseCase, FetchAllOrdersUseCase fetchAllOrdersUseCase, DeleteOrderUseCase deleteOrderUseCase, ValidateCustomerName validateCustomerName,
                                 ValidateProductName validateProductName,
                                 ValidateQuantityUseCase validateQuantityUseCase,
                                 ValidatePriceUseCase validatePriceUseCase) {
+        this.repository = repository;
+        this.createOrderUseCase = createOrderUseCase;
+        this.fetchAllOrdersUseCase = fetchAllOrdersUseCase;
+        this.deleteOrderUseCase = deleteOrderUseCase;
         this.validateCustomerName = validateCustomerName;
         this.validateProductName = validateProductName;
         this.validateQuantityUseCase = validateQuantityUseCase;
         this.validatePriceUseCase = validatePriceUseCase;
+        disposables = new CompositeDisposable();
     }
 
     public void createOrder(String customerName, String product, String quantity, String price) {
         if (validateFields(customerName, product, quantity, price)) {
-            //TODO Save in API
+            Order order = new Order(null, customerName, product, Integer.parseInt(quantity), Double.parseDouble(price));
+            disposables.add(
+                    createOrderUseCase.execute(order)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(
+                                    createdOrder -> orderCreated.setValue(new Event<>(createdOrder)),
+                                    throwable -> errorMessage.setValue(new Event<>("Erro ao criar o pedido: " + throwable.getMessage()))
+                            )
+            );
         }
     }
 
@@ -74,5 +101,11 @@ public class CreateOrderViewModel extends ViewModel {
 
     public MutableLiveData<Event<FieldErrorValidation>> getFieldErrorLiveData() {
         return fieldErrorLiveData;
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        disposables.clear();
     }
 }
