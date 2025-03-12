@@ -12,7 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.pedroid.pdv_app.R;
 import com.pedroid.pdv_app.databinding.FragmentCreateOrderBinding;
+import com.pedroid.pdv_app.domain.model.Order;
+import com.pedroid.pdv_app.presentation.utils.ViewUtils;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -56,6 +60,18 @@ public class CreateOrderFragment extends Fragment {
                         binding.etPrecoTotal.setError(fieldErrorValidation.getErrorMessage().asString(requireContext()));
                         break;
                 }
+            }
+        });
+        viewModel.getErrorMessage().observe(getViewLifecycleOwner(), messageEvent -> {
+            String message = messageEvent.getContentIfNotHandled();
+            if (message != null) {
+                ViewUtils.showSnackbar(requireView(), message, Snackbar.LENGTH_LONG);
+            }
+        });
+        viewModel.getOrderCreated().observe(getViewLifecycleOwner(), orderEvent -> {
+            Order order = orderEvent.getContentIfNotHandled();
+            if (order != null) {
+                ViewUtils.showSnackbar(requireView(), getString(R.string.order_created), Snackbar.LENGTH_SHORT);
             }
         });
     }

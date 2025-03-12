@@ -5,10 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.pedroid.pdv_app.domain.ValidationResult;
 import com.pedroid.pdv_app.domain.model.Order;
-import com.pedroid.pdv_app.domain.repository.IOrderRepository;
 import com.pedroid.pdv_app.domain.use_cases.order_repository.CreateOrderUseCase;
-import com.pedroid.pdv_app.domain.use_cases.order_repository.DeleteOrderUseCase;
-import com.pedroid.pdv_app.domain.use_cases.order_repository.FetchAllOrdersUseCase;
 import com.pedroid.pdv_app.domain.use_cases.ui_validation.ValidateCustomerName;
 import com.pedroid.pdv_app.domain.use_cases.ui_validation.ValidatePriceUseCase;
 import com.pedroid.pdv_app.domain.use_cases.ui_validation.ValidateProductName;
@@ -25,10 +22,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 @HiltViewModel
 public class CreateOrderViewModel extends ViewModel {
     private final CompositeDisposable disposables;
-    private final IOrderRepository repository;
     private final CreateOrderUseCase createOrderUseCase;
-    private final FetchAllOrdersUseCase fetchAllOrdersUseCase;
-    private final DeleteOrderUseCase deleteOrderUseCase;
     private final ValidateCustomerName validateCustomerName;
     private final ValidateProductName validateProductName;
     private final ValidateQuantityUseCase validateQuantityUseCase;
@@ -38,14 +32,13 @@ public class CreateOrderViewModel extends ViewModel {
     private final MutableLiveData<Event<String>> errorMessage = new MutableLiveData<>();
 
     @Inject
-    public CreateOrderViewModel(IOrderRepository repository, CreateOrderUseCase createOrderUseCase, FetchAllOrdersUseCase fetchAllOrdersUseCase, DeleteOrderUseCase deleteOrderUseCase, ValidateCustomerName validateCustomerName,
-                                ValidateProductName validateProductName,
-                                ValidateQuantityUseCase validateQuantityUseCase,
-                                ValidatePriceUseCase validatePriceUseCase) {
-        this.repository = repository;
+    public CreateOrderViewModel(
+            CreateOrderUseCase createOrderUseCase,
+            ValidateCustomerName validateCustomerName,
+            ValidateProductName validateProductName,
+            ValidateQuantityUseCase validateQuantityUseCase,
+            ValidatePriceUseCase validatePriceUseCase) {
         this.createOrderUseCase = createOrderUseCase;
-        this.fetchAllOrdersUseCase = fetchAllOrdersUseCase;
-        this.deleteOrderUseCase = deleteOrderUseCase;
         this.validateCustomerName = validateCustomerName;
         this.validateProductName = validateProductName;
         this.validateQuantityUseCase = validateQuantityUseCase;
@@ -101,6 +94,14 @@ public class CreateOrderViewModel extends ViewModel {
 
     public MutableLiveData<Event<FieldErrorValidation>> getFieldErrorLiveData() {
         return fieldErrorLiveData;
+    }
+
+    public MutableLiveData<Event<Order>> getOrderCreated() {
+        return orderCreated;
+    }
+
+    public MutableLiveData<Event<String>> getErrorMessage() {
+        return errorMessage;
     }
 
     @Override
