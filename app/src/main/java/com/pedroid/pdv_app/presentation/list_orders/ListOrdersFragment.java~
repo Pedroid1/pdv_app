@@ -32,7 +32,6 @@ public class ListOrdersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         List<OrderListAdapterItem> orders = new ArrayList<>();
-        orders.add(new OrderListAdapterItem.EmptyItem());
         //orders.add(new OrderListAdapterItem.OrderItem(new Order(1, "Pedro", "Fone", 1, 100D)));
         //orders.add(new OrderListAdapterItem.OrderItem(new Order(2, "Andressa", "Computador", 2, 10000D)));
 
