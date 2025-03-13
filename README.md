@@ -22,6 +22,9 @@
   - Lifecycle: Observe os ciclos de vida do Android e manipule os estados da interface do usuário após as alterações do ciclo de vida.
   - ViewModel: Gerencia o detentor de dados relacionados à interface do usuário e o ciclo de vida. Permite que os dados sobrevivam a alterações de configuração, como   rotações de tela.
 
+- ListAdapter:
+  - A exibição da lista de pedidos é feita usando o ListAdapter, que é uma implementação de RecyclerView.Adapter otimizada. Ele usa internamente o DiffUtil para comparar e atualizar a lista de maneira eficiente,   garantindo que apenas os itens alterados sejam atualizados, melhorando o desempenho da aplicação.
+
 - Arquitetura
   - MVVM (View - ViewModel - Model) com Clean Architecture
   - Comunicação da ViewModel com a View através de LiveData
