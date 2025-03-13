@@ -1,0 +1,7 @@
+package com.pedroid.pdv_app.domain.use_cases.ui_validation;
+
+import static org.junit.Assert.*;
+
+public class ValidateQuantityUseCaseTest {
+
+}
