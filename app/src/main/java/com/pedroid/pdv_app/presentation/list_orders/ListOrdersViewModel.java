@@ -104,4 +104,10 @@ public class ListOrdersViewModel extends ViewModel {
     public MutableLiveData<Event<String>> getErrorMessage() {
         return errorMessage;
     }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        disposables.clear();
+    }
 }
