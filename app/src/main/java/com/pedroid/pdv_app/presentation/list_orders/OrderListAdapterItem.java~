@@ -1,0 +1,32 @@
+package com.pedroid.pdv_app.presentation.list_orders;
+
+public abstract class OrderListAdapterItem {
+    private EnumCommentListAdapterViewType viewType;
+
+    public OrderListAdapterItem(EnumCommentListAdapterViewType viewType) {
+        this.viewType = viewType;
+    }
+
+    public EnumCommentListAdapterViewType getViewType() {
+        return viewType;
+    }
+
+    // Classe interna para o tipo de item "CommentItem"
+    public static class OrderItem extends OrderListAdapterItem {
+        private Comment comment;
+
+        public CommentItem(Comment comment) {
+            super(EnumCommentListAdapterViewType.COMMENT);
+            this.comment = comment;
+        }
+
+        public Comment getComment() {
+            return comment;
+        }
+    }
+    public static class EmptyItem extends OrderListAdapterItem {
+        public EmptyItem() {
+            super(EnumCommentListAdapterViewType.EMPTY);
+        }
+    }
+}
