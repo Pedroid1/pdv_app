@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f4f6f9"
     android:padding="24dp">
 
     <TextView
@@ -15,7 +14,6 @@
         android:layout_marginBottom="24dp"
         android:gravity="center"
         android:text="@string/create_new_order_title"
-        android:textColor="#333"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +30,6 @@
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="#00796b"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +42,6 @@
             android:inputType="textPersonName"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textColor="#333"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,9 +55,8 @@
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="#00796b"
-        app:layout_constraintEnd_toEndOf="parent"
         app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_customer">
 
@@ -72,7 +67,6 @@
             android:inputType="text"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textColor="#333"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,7 +80,6 @@
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
-        app:boxStrokeColor="#00796b"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +92,6 @@
             android:inputType="number"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textColor="#333"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,7 +106,6 @@
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
         app:errorEnabled="true"
-        app:boxStrokeColor="#00796b"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_quantity">
@@ -126,7 +117,6 @@
             android:inputType="numberDecimal"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            android:textColor="#333"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -136,11 +126,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#00796b"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
         android:text="@string/salvar_pedido"
-        android:textColor="#fff"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
