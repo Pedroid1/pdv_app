@@ -24,6 +24,7 @@
 
 - ListAdapter:
   - A exibição da lista de pedidos é feita usando o ListAdapter, que é uma implementação de RecyclerView.Adapter otimizada. Ele usa internamente o DiffUtil para comparar e atualizar a lista de maneira eficiente,   garantindo que apenas os itens alterados sejam atualizados, melhorando o desempenho da aplicação.
+  - Permite a exibição de diferentes tipos de itens na lista, como os pedidos e itens vazios, foi implementado um mecanismo de múltiplas views. Cada item da lista possui um tipo de view, determinado por um enum, que define como ele será exibido. Isso permite que diferentes tipos de dados, como pedidos ou itens vazios, sejam exibidos de maneira eficiente em uma única lista.
 
 - Arquitetura
   - MVVM (View - ViewModel - Model) com Clean Architecture
