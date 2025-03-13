@@ -41,22 +41,16 @@ android {
 
 dependencies {
 
+    //--------------Default-------------
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
 
     //--------------Lifecycle-------------
-    // ViewModel
     implementation(libs.lifecycle.viewmodel)
-    // LiveData
     implementation(libs.lifecycle.livedata)
-    // Lifecycles only (without ViewModel or LiveData)
     implementation(libs.androidx.lifecycle.runtime)
-    // Annotation processor
     annotationProcessor(libs.androidx.lifecycle.compiler)
 
     //--------------Hilt-------------
@@ -76,4 +70,12 @@ dependencies {
     //--------------RxJava-------------
     implementation (libs.rxandroid)
     implementation (libs.rxjava)
+
+    //--------------Testing-------------
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    testImplementation(libs.truth)
+    testImplementation(libs.mockk)
+    testImplementation(libs.androidx.core.testing)
 }

@@ -13,8 +13,12 @@ navigationFragment = "2.8.8"
 retrofit = "2.11.0"
 rxandroid = "3.0.2"
 rxjava = "3.1.8"
+mockk = "1.12.5"
+truth = "1.4.2"
+coreTesting = "2.2.0"
 
 [libraries]
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
 adapter-rxjava3 = { module = "com.squareup.retrofit2:adapter-rxjava3", version.ref = "retrofit" }
 androidx-lifecycle-compiler = { module = "androidx.lifecycle:lifecycle-compiler", version.ref = "lifecycleViewmodel" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "lifecycleViewmodel" }
@@ -36,6 +40,9 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
 rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
+truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
